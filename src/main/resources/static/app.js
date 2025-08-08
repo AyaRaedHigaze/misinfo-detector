@@ -64,4 +64,3 @@ document.getElementById("clearBtn").addEventListener("click", () => {
     document.getElementById("result").textContent = "No analysis yet. Submit content to see flags, sources, and reasoning.";
     document.getElementById("error").textContent = "";
 });
-
