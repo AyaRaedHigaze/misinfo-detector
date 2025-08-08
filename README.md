@@ -12,8 +12,8 @@ It consists of:
 
 ## 👥 Developed By
 
-- **Aya Higaze** – Backend Developer (Spring Boot + AI Integration)
-- **Khadijah Abd el Ghane** – Frontend Developer (HTML/CSS/JS + UX + Documentation)
+- **Aya Higaze, 211910872** – Backend Developer (Spring Boot + AI Integration)
+- **Khadijah Abd el Ghane, 212060073** – Frontend Developer (HTML/CSS/JS + UX + Documentation)
 
 ---
 
@@ -160,6 +160,13 @@ Just open `index.html` in your browser (it sends requests to the backend on the 
 - "Vaccines cause autism"
 - "Coffee can cure depression"
 - "The earth is flat"
+
+---
+
+## 📎 Attachments:
+- GitHub Repository: https://github.com/AyaRaedHigaze/misinfo-detector
+- Project Demo (YouTube): https://youtu.be/lb9cKWG6OyY
+
 
 ---
 

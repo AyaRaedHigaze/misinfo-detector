@@ -31,10 +31,6 @@ document.getElementById("analyzeBtn").addEventListener("click", async () => {
 
         let html = "";
         if (data.score !== undefined) html += `<p><strong>Risk score:</strong> ${data.score}</p>`;
-        if (data.flags?.length) {
-            html += `<p><strong>Flags:</strong></p><ul>${data.flags.map(f => `<li>${f}</li>`).join("")}</ul>`;
-        }
-        if (data.explanation) html += `<p><strong>Explanation:</strong> ${data.explanation}</p>`;
         // عرض الـ flags إذا كانت موجودة
         if (Array.isArray(data.flags) && data.flags.length > 0) {
             html += `<div><strong>Flags:</strong><ul>`;
@@ -45,6 +41,7 @@ document.getElementById("analyzeBtn").addEventListener("click", async () => {
         } else {
             html += `<p>No flags detected.</p>`;
         }
+        if (data.explanation) html += `<p><strong>Explanation:</strong> ${data.explanation}</p>`;
 
         if (data.sources?.length) {
             html += `<p><strong>Sources:</strong></p><ul>${data.sources.map(s => `<li><a href="${s}" target="_blank">${s}</a></li>`).join("")}</ul>`;
