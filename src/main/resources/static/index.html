@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TruthLens – Misinformation Check</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+    <h1>TruthLens · Misinformation Check</h1>
+    <span class="badge">AI-Assisted</span>
+</header>
+
+<main>
+    <section class="input-section">
+        <label for="content">Paste a tweet, headline, or short post</label>
+        <textarea id="content" rows="5" placeholder="e.g., 'Scientists say coffee cures all diseases by 2030'"></textarea>
+        <div class="buttons">
+            <button id="analyzeBtn">Analyze</button>
+            <button id="clearBtn">Clear</button>
+        </div>
+        <div id="error" class="error"></div>
+    </section>
+
+    <section class="result-section">
+        <h2>Result</h2>
+        <div id="result">No analysis yet. Submit content to see flags, sources, and reasoning.</div>
+    </section>
+</main>
+
+<footer>
+    <p>TruthLens © 2025</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
