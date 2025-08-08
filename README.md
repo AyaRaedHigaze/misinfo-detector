@@ -1,70 +1,112 @@
-# TruthLens: Misinformation Detection API
 
-TruthLens is a backend Spring Boot service designed to analyze textual claims for misinformation, logical fallacies, and cognitive biases. It uses the Gemini AI (Google) API for analysis, and optionally generates fact-checking search links for further validation.
+# 🌐 TruthLens: AI-Powered Misinformation Detection Tool
 
----
+**TruthLens** is a full-stack web tool built to help users analyze short-form content (tweets, headlines, or social media posts) for **misinformation**, **logical fallacies**, and **cognitive biases** using AI.
 
-## 🚑 Built With Love By
-
-* Aya Higaze (Backend developer)
-* Khadijah Abd el Ghane (Frontend developer)
-
+It consists of:
+- A responsive **frontend** (HTML/CSS/JavaScript)
+- A powerful **backend** built with Spring Boot
+- Integration with **Gemini (Google AI)** for natural language understanding
 
 ---
 
-## ✨ Overview
+## 👥 Developed By
 
-TruthLens receives a text input via a RESTful API, sends it to the Gemini model for deep analysis, and returns:
-
-* **flags**: Detected misinformation, fallacies, or biases
-* **explanation**: A scientific or logical summary of the issue
-* **sources**: Relevant source links (from Gemini or search generators)
-* **neutral**: A boolean indicating whether the claim was neutral (i.e., no flags)
-
-This API is intended to be used as the backend of a misinformation detection platform.
+- **Aya Higaze** – Backend Developer (Spring Boot + AI Integration)
+- **Khadijah Abd el Ghane** – Frontend Developer (HTML/CSS/JS + UX + Documentation)
 
 ---
 
-## ⚡ Technologies Used
+## ✨ Features
 
-* Java 17
-* Spring Boot
-* REST API (Spring Web)
-* Google Gemini API
-* Jackson (for JSON processing)
-* Lombok (for cleaner models)
+✅ Analyze any short text or claim  
+✅ Detect fallacies, biases, and misinformation  
+✅ Generate links for external fact-checking  
+✅ Show explanations and source links  
+✅ Clear, readable JSON output with raw data toggle  
+✅ Frontend-ready for deployment or extension
 
 ---
 
-## 📊 Example Request
+## 🧠 How It Works
 
-### Endpoint:
+1. User enters a short claim via a textarea field in the UI
+2. The frontend sends a `POST` request to `/api/analyze` with the claim
+3. The backend calls Gemini AI with a prompt to analyze the claim
+4. Gemini responds with:
+    - `flags`: list of detected problems
+    - `explanation`: summary of the claim’s issues
+    - `sources`: related links
+    - `neutral`: boolean for neutral claims
+5. The result is rendered dynamically to the user
 
+---
+
+## ⚙️ Technologies Used
+
+### 🔧 Backend (Spring Boot)
+- Java 17
+- Spring Boot
+- Google Gemini API
+- Jackson (JSON parsing)
+- Lombok (for models)
+- RESTful APIs
+
+### 🎨 Frontend (Vanilla JS)
+- HTML5
+- CSS3
+- JavaScript (DOM, Fetch API)
+
+---
+
+## 🖥️ Project Structure
+
+```
+├── backend/
+│   └── src/main/java/com/truthlens/misinfodetector/
+│       ├── controller/
+│       │   └── AnalysisController.java
+│       ├── model/
+│       │   ├── AnalysisRequest.java
+│       │   └── AnalysisResult.java
+│       ├── service/
+│       │   ├── AIService.java
+│       │   ├── AnalysisService.java
+│       │   └── SimpleFactCheckService.java
+│       └── resources/
+│           └── application.properties
+│
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── app.js
+```
+
+---
+
+## 📊 API Example
+
+### 🔹 Endpoint:
 `POST /api/analyze`
 
-### Request Body:
-
+### 🔹 Request:
 ```json
 {
   "text": "Drinking bleach can cure COVID-19."
 }
 ```
 
-### Example Response:
-
+### 🔹 Response:
 ```json
 {
   "flags": [
     "Misinformation",
-    "Appeal to False Authority",
-    "Oversimplification",
-    "Appeal to Desperation"
+    "Appeal to False Authority"
   ],
   "explanation": "The claim that drinking bleach can cure COVID-19 is false and extremely dangerous...",
   "sources": [
-    "https://www.who.int/...",
-    "https://www.fda.gov/...",
-    "https://www.poison.org/..."
+    "https://www.who.int/",
+    "https://www.fda.gov/"
   ],
   "neutral": false
 }
@@ -72,46 +114,63 @@ This API is intended to be used as the backend of a misinformation detection pla
 
 ---
 
-## 📰 Prompt Used for Gemini
+## 💬 Gemini Prompt Template
 
-````text
-Claim: "..."
+```
+Claim: "[input]"
 
 Analyze the claim for:
 1. Logical fallacies (if any)
 2. Cognitive biases (if any)
 3. A scientific explanation to address or correct the claim, if needed.
 
-If the claim is purely subjective (such as an opinion or personal statement), and does not contain misinformation,
-logical fallacies, or cognitive biases, respond with an empty flags list and a simple explanation saying it's 
-a personal opinion or neutral statement.
+If the claim is purely subjective, respond with an empty flags list and a short explanation stating it's neutral.
 
-Return the `sources` field as a list of plain URLs in string format only.
-Respond STRICTLY with a valid JSON object. Do NOT use Markdown formatting (no ```), and do NOT include any 
-explanation or surrounding text.
-````
-
----
-
-## 📄 Folder Structure
-
-```
-com.truthlens.misinfodetector
-├── controller
-│   └── AnalysisController.java
-├── model
-│   ├── AnalysisRequest.java
-│   └── AnalysisResult.java
-├── service
-│   ├── AIService.java
-│   ├── AnalysisService.java
-│   └── SimpleFactCheckService.java
-└── resources
-    └── application.properties
+Return the result as a valid JSON object:
+{
+  "flags": ["..."],
+  "explanation": "...",
+  "sources": ["..."]
+}
 ```
 
 ---
 
-## 🔄 License
+## 🚀 Running the Project
 
-This project is for educational purposes.
+### 🔧 Backend:
+```bash
+cd backend
+./mvnw spring-boot:run
+```
+
+Make sure to add Gemini API key in `application.properties`:
+```
+gemini.api.key=AIzaSyAbbyie3SEIiDgJcw1GSsd3vsEMxgkTltA
+```
+
+### 🌐 Frontend:
+Just open `index.html` in your browser (it sends requests to the backend on the same host/port).
+
+---
+
+## 📎 Sample Claims to Try
+
+- "Aliens landed in Canada in 2024"
+- "Vaccines cause autism"
+- "Coffee can cure depression"
+- "The earth is flat"
+
+---
+
+## 📜 License
+
+This project is for educational use only.
+
+---
+
+## 🙌 Acknowledgments
+
+- Google Gemini API
+- Spring Boot community
+- OpenAI / ChatGPT for prompt engineering assistance
