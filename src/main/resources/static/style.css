@@ -37,8 +37,19 @@ main {
     padding: 1.5rem;
 }
 
-/* ===== Textarea ===== */
-textarea {
+/* ===== Input Section Improvements ===== */
+.input-section {
+    margin-top: 2.5rem;
+}
+
+.input-section label {
+    display: block;
+    margin-bottom: 0.7rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.input-section textarea {
     width: 100%;
     padding: 0.75rem;
     border-radius: 10px;
@@ -48,8 +59,11 @@ textarea {
     line-height: 1.5;
     background: #fff;
     transition: all 0.2s ease;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
 }
 
+/* ===== Textarea Focus ===== */
 textarea:focus {
     outline: none;
     border-color: #6a11cb;
@@ -58,12 +72,14 @@ textarea:focus {
 
 /* ===== Buttons ===== */
 .buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
     margin-top: 0.8rem;
 }
 
 button {
     padding: 0.6rem 1.2rem;
-    margin-right: 0.5rem;
     border-radius: 8px;
     border: none;
     cursor: pointer;
@@ -97,13 +113,14 @@ button:hover {
 
 /* ===== Result Box ===== */
 .result-section {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     background: #ffffff;
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: 12px;
     border: 1px solid #e0e0e0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
     line-height: 1.6;
+    font-size: 1rem;
 }
 
 .result-section p,
@@ -119,7 +136,6 @@ button:hover {
     color: #6a11cb;
 }
 
-
 /* ===== Footer ===== */
 footer {
     text-align: center;
@@ -128,4 +144,3 @@ footer {
     color: #666;
     margin-top: 2rem;
 }
-
